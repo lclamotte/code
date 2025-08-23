@@ -47,3 +47,23 @@ class FplMatchup:
 
     def __repr__(self):
         return f"FplMatchup(fpl_team_id_1={self.fpl_team_id_1}, fpl_team_id_2={self.fpl_team_id_2}, team_1_points={self.team_1_points}, team_2_points={self.team_2_points})"
+
+class Fixture:
+    def __init__(self, home_team, away_team, home_score, away_score, started, finished):
+        self.home_team = home_team
+        self.away_team = away_team
+        self.home_score = home_score
+        self.away_score = away_score
+        self.started = started
+        self.finished = finished
+
+    def __repr__(self):
+        return f"Fixture(home_team={self.home_team}, away_team={self.away_team}, home_score={self.home_score}, away_score={self.away_score}, started={self.started}, finished={self.finished})"
+
+class ElementType:
+    def __init__(self, id, position_name):
+        self.id = id
+        self.position_name = position_name
+    
+    def __repr__(self):
+        return f"ElementType(id={self.id}, position_name='{self.position_name}')"
