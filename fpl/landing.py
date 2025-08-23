@@ -5,6 +5,7 @@ import requests
 import streamlit as st
 
 from classes import FplTeam
+from http_helpers import get_current_gameweek, get_league_json
 
 LEAGUE_ID = 70016
 BASE_URL = "https://draft.premierleague.com/api/"
@@ -48,7 +49,8 @@ def main():
         ":jack_o_lantern:", ":santa:", ":tada:", ":confetti_ball:", ":balloon:", ":video_game:", ":game_die:", ":dart:", ":trophy:", ":trumpet:", ":saxophone:", ":tophat:", ":crown:", ":womans_hat:", ":eyeglasses:", ":crystal_ball:", ":sparkles:", ":star2:", ":zap:", ":boom:",
         ":dizzy:", ":sweat_drops:", ":dash:", ":100:", ":ok_hand:", ":+1:", ":-1:", ":clap:", ":metal:", ":poop:"
     ]
-
+    current_gameweek = get_current_gameweek()
+    st.header(f"Current gameweek: {current_gameweek}", divider="gray")
     bootstrap_json = get_bootstrap_json()
     league_json = get_league_json()
     league_teams = league_json.get('league_entries', [])

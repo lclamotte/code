@@ -10,13 +10,14 @@ class LivePlayerData:
         return f"LivePlayerData(id={self.id}, points={self.points}, goals={self.goals}, assists={self.assists}, minutes={self.minutes})"
 
 class Player:
-    def __init__(self, id, club_id, name):
+    def __init__(self, id, club_id, name, element_type):
         self.id = id
         self.club_id = club_id
         self.name = name
+        self.element_type = element_type
 
     def __repr__(self):
-        return f"Player(id={self.id}, name='{self.name}', club_id='{self.club_id}')"
+        return f"Player(id={self.id}, name='{self.name}', club_id='{self.club_id}', element_type='{self.element_type}')"
 
 class FplTeam:
     def __init__(self, id, entry_id, manager_name, team_name, players=None):

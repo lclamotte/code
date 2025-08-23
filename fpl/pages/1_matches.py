@@ -1,15 +1,24 @@
+import streamlit as st
+
+from classes import Club, FplMatchup, FplTeam, LivePlayerData, Player
+
+from http_helpers import get_bootstrap_json, get_current_gameweek, get_league_json, get_live_data, get_team_players
+from utils import create_fpl_team_map
+
 def main():
+    current_gameweek = get_current_gameweek()
+    bootstrap_json = get_bootstrap_json()
     all_clubs_map = {team.get('id'): Club(team.get('id'), team.get('name')) for team in bootstrap_json.get('teams', [])}
     all_players_map = {player.get('id'): Player(player.get('id'), player.get('team'), player.get('web_name')) for player in bootstrap_json.get('elements', [])}
 
-    live_json = get_live_data()
+    live_json = get_live_data(current_gameweek)
     live_players = live_json.get('elements', [])
     live_player_data = {int(i): LivePlayerData(i,
                                                          live_players[i].get('stats', {}).get('total_points', 0),
                                                          live_players[i].get('stats', {}).get('goals_scored', 0),
                                                          live_players[i].get('stats', {}).get('assists', 0),
                                                          live_players[i].get('stats', {}).get('minutes', 0)) for i in live_players}
-    league_json = get_league_details()
+    league_json = get_league_json()
     league_teams = league_json.get('league_entries', [])
     fpl_team_map = create_fpl_team_map(league_teams) # map of id -> FplTeam
     
