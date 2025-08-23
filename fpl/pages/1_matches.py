@@ -37,7 +37,7 @@ def render_team_table(team_xi: List[Player], element_types_map, live_player_data
             break
         data.append([name_cell, points_cell, goals_cell, assists_cell, minutes_cell, game_status_cell])
     df = pd.DataFrame(data, columns=columns)
-    st.dataframe(df, hide_index=True)
+    st.dataframe(df, hide_index=True, height = 12 * 35 + 3)  # 11 rows + 1 header, 35 for row height, plus 3 for borders
 
 def main():
     current_gameweek = get_current_gameweek()
