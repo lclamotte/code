@@ -36,6 +36,8 @@ def main():
         ])
     df = pd.DataFrame(data, columns=columns)
     st.dataframe(df, hide_index=True)
+    st.write("Note: This table only updates at the conclusion of each gameweek, of course")
+    st.write("See the **matches** page for live data")
 
 if __name__ == "__main__":
     main()
