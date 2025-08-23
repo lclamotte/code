@@ -9,7 +9,7 @@ def main():
     current_gameweek = get_current_gameweek()
     bootstrap_json = get_bootstrap_json()
     all_clubs_map = {team.get('id'): Club(team.get('id'), team.get('name')) for team in bootstrap_json.get('teams', [])}
-    all_players_map = {player.get('id'): Player(player.get('id'), player.get('team'), player.get('web_name')) for player in bootstrap_json.get('elements', [])}
+    all_players_map = {player.get('id'): Player(player.get('id'), player.get('team'), player.get('web_name'), player.get('element_type')) for player in bootstrap_json.get('elements', [])}
 
     live_json = get_live_data(current_gameweek)
     live_players = live_json.get('elements', [])
